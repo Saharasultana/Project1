@@ -214,7 +214,7 @@ section .section-title {
 
   /*Registration Form */
   #signup {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../img/homework2.jpg);
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../img/reg.jpg);
     
 }
 
@@ -222,7 +222,7 @@ section .section-title {
     margin-top: 80px;
     margin-bottom: 100px;
     max-width: 600px;
-    height: 550px;
+    height: 560px;
     border: 1px solid #eeeeee;
     border-radius: 10px;
     background-color: #000000;
