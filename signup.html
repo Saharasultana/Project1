@@ -15,8 +15,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-light">
         <div class="container">
             <a class="navbar-brand" href="#"> BujoBud </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -71,13 +70,12 @@
                                 <input type="text" name="password" id="password" class="form-control">
                             </div>
 
-                            <div class="form-group">
-                                <input type="file" class="custom-file-input" id="customFile" name="filename">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFile">
                                 <label class="custom-file-label" for="customFile">Choose file</label>
-
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                                <input type="submit" name="submit" class="btn btn-info" value="submit">
                             </div>
 
                             </form>
@@ -152,7 +150,7 @@
 
         <script>
             // Add the following code if you want the name of the file appear on select
-            $(".custom-file-input").on("change", function () {
+            $(".custom-file-input").on("change", function() {
                 var fileName = $(this).val().split("\\").pop();
                 $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             });
