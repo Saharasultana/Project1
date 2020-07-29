@@ -93,7 +93,7 @@ h2::after{
 }
 #about{
     background:white;
-    margin-top: 80px;
+    padding-top: 80px;
     text-align: justify;
 }
 #about p{
