@@ -217,6 +217,9 @@ section .section-title {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(../img/reg.jpg);
     
 }
+ .title{
+    color:cyan;
+}
 
 #signup .container #signup-row #signup-column #signup-box{
     margin-top: 80px;

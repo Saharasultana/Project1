@@ -15,7 +15,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-light">
         <div class="container">
             <a class="navbar-brand" href="#"> BujoBud </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -52,26 +53,26 @@
                 <div id="signup-column" class="col-md-6">
                     <div id="signup-box" class="col-md-12">
                         <div id="signup-form" class="form" action="" method="post">
-                            <h3 class="text-center text-info">Sign UP</h3>
+                            <h3 class="text-center title">Sign UP</h3>
                             <div class="form-group">
-                                <label for="username" class="text-info">Full Name:</label><br>
+                                <label for="username" class="title">Full Name:</label><br>
                                 <input type="text" name="username" id="name" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="username" class="text-info">Email:</label><br>
+                                <label for="username" class="title">Email:</label><br>
                                 <input type="text" name="username" id="email" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="username" class="text-info">username:</label><br>
+                                <label for="username" class="title">username:</label><br>
                                 <input type="text" name="username" id="username" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
+                                <label for="password" class="title">Password:</label><br>
                                 <input type="text" name="password" id="password" class="form-control">
                             </div>
 
 
-                            <p class="text-info">Image:</p>
+                            <p class="title">Image:</p>
                             <div class="custom-file mb-3">
                                 <input type="file" class="custom-file-input" id="customFile" name="image" required>
                                 <label class="custom-file-label" for="customFile">Choose file</label>
@@ -166,7 +167,7 @@
 
         <script>
             // Add the following code if you want the name of the file appear on select
-            $(".custom-file-input").on("change", function() {
+            $(".custom-file-input").on("change", function () {
                 var fileName = $(this).val().split("\\").pop();
                 $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
             });
