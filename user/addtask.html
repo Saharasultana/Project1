@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
-    <li rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js">
-    </li>
+
+    <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="dist/css/propeller.min.css">
+    <link rel="stylesheet" href="datetimepicker/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" href="datetimepicker/css/pmd-datetimepicker.css">
+
     <link rel="stylesheet" href="profile.css">
     <title>Add Task</title>
 </head>
@@ -123,14 +126,13 @@
 
 
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">select Date</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+
+                            <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                                <label class="control-label" for="datetimepicker-default">Select Date and Time</label>
+                                <input type="text" id="datetimepicker-default" class="form-control" />
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">select Time</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
-                            </div>
+
+
                             <div class="form-group form-check">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1">
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
@@ -155,9 +157,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
 
-    $(function () {
-    $('[data-toggle="tooltip"]').tooltip()
-    })
+
+    <!-- Propeller textfield js -->
+    <script type="text/javascript" src="dist/js/propeller.min.js"></script>
+
+    <!-- Datepicker moment with locales -->
+    <script type="text/javascript" language="javascript" src="datetimepicker/js/moment-with-locales.js"></script>
+
+    <!-- Propeller Bootstrap datetimepicker -->
+    <script type="text/javascript" language="javascript" src="datetimepicker/js/bootstrap-datetimepicker.js"></script>
+
+    <script>
+        // Default date and time picker
+        $('#datetimepicker-default').datetimepicker();
+    </script>
+
+
+
 
 </body>
 
