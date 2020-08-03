@@ -22,7 +22,7 @@
             <div id="signup-row" class="row justify-content-center align-items-center">
                 <div id="signup-column" class="col-md-6">
                     <div id="signup-box" class="col-md-12">
-                        <div id="signup-form" class="form" action="" method="post">
+                        <div id="signup-form" class="form" action="sign_up.php" method="post">
                             <h3 class="text-center title">Sign Up</h3>
                             <div class="form-group">
                                 <label for="username" class="title">Full Name:</label><br>
