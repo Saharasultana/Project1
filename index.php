@@ -25,7 +25,7 @@
                         only five centuries, but also the leap into electronic typesetting, remaining essentially
                         unchanged
                     </p>
-                    <a class="btn btn-outline-primary mt-3" href="#" role="button">Sign Up Now</a>
+                    <a class="btn btn-outline-primary mt-3" href="signup.php" role="button">Sign Up Now</a>
                 </div>
             </div>
         </div>
