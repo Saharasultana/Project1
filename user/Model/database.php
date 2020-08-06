@@ -21,7 +21,7 @@ class database
         $this->link = mysqli_connect($this->hostname, $this->username, $this->password, $this->dbname);
 
         if ($this->link) {
-            //echo "connected";
+            echo "connected";
         } else {
             echo "not connected";
         }
