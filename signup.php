@@ -1,26 +1,29 @@
 <?php
 session_start();
-include('user/Model/User.php');
+include('Model/User.php');
 //create an object of user class
 $user = new User();
 
 if (isset($_POST['submit'])) {
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $image = $_POST['image'];
-    $target_dir = 'user_img/.$image';
-    $target_file = $target_dir . basename($_FILES["image"]["name"]);
- 
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    $pass = password_hash("$password", PASSWORD_DEFAULT);
 
+    $fullname = $user->filter($_POST['fullname']);
+    $email = $user->filter($_POST['email']);
+    $username = $user->filter($_POST['username']);
+    $password = $user->filter($_POST['password']);
+    $pass = password_hash("$password", PASSWORD_DEFAULT);
     if($user->isExistUserWithEmail($email)){
-        echo 'Already user exists with this email';
+        $_SESSION['message'] = 'Already user exists with this email';
     }else{
-        $user->addUser($fullname,$email,$username,$password,$image);
-        echo 'Successfully added';
+        if($_FILES['image']){ //check if file contains
+            $image_data = $user->imageUpload('uploads',$_FILES['image']); //imageUpload function in Database.php
+            if($image_data['result'] == true){
+                $created_at = date('Y-m-d H:i:s');
+                $user->addUser($fullname,$email,$username,$pass,$image_data['data'],$created_at);
+                $_SESSION['message'] = 'Successfully registered';
+            }else{
+                $_SESSION['message'] = $image_data['data'];
+            }
+        }
     }
 }
 ?>
@@ -49,7 +52,13 @@ if (isset($_POST['submit'])) {
         <div id="signup-row" class="row justify-content-center align-items-center">
             <div id="signup-column" class="col-md-6">
                 <div id="signup-box" class="col-md-12">
-                    <form id="signup-form" class="form" action=" " method="post" entype="multipart/form-data">
+                    <?php
+                    if(!empty($_SESSION['message'])){?>
+                        <h3 style="color: red" class="text-center"><?php echo $_SESSION['message']?></h3>
+                    <?php }
+                    unset($_SESSION['message']);
+                    ?>
+                    <form id="signup-form" class="form" action=" " method="post" enctype="multipart/form-data">
                         <h3 class="text-center title">Sign Up</h3>
                         <div class="form-group">
                             <label for="username" class="title">Full Name:</label><br>
