@@ -1,33 +1,12 @@
 <?php
-
-class database
-{
-    private $hostname = "localhost";
-    private $username = "root";
-    private $password = "";
-    private $dbname = "bujobud";
-
-    protected $link;
-
+class Database{
+    public $db;
     public function __construct()
     {
-        $this->connection();
-        # code...
-    }
-
-    public function connection()
-    {
-
-        $this->link = mysqli_connect($this->hostname, $this->username, $this->password, $this->dbname);
-
-        if ($this->link) {
-           // echo "connected";
-        } else {
-            echo "not connected";
+        $con=new PDO("mysql:host=localhost;dbname=bujobud","root","");
+        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if (!isset($this->db)){
+            $this->db = $con;
         }
-
-        # code...
     }
 }
-
-$obj = new database;
