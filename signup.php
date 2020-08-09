@@ -12,17 +12,22 @@ if (isset($_POST['submit'])) {
     $password = $user->filter($_POST['password']);
     $pass = password_hash("$password", PASSWORD_DEFAULT);
     if($user->isExistUserWithEmail($email)){
-        $_SESSION['message'] = 'Already user exists with this email!';
+        $_SESSION['message'] = 'Already user exists with this email';
     }else{
         if($_FILES['image']){ //check if file contains
             $image_data = $user->imageUpload('uploads',$_FILES['image']); //imageUpload function in Database.php
+            #die('died'.'<pre>'.print_r($image_data, true));
             if($image_data['result'] == true){
                 $created_at = date('Y-m-d H:i:s');
-                $user->addUser($fullname,$email,$username,$pass,$image_data['data'],$created_at);
-                $_SESSION['message'] = 'Successfully registered!';
+                $user_id = $user->addUser($fullname,$email,$username,$pass,$image_data['data'],$created_at);
+                $_SESSION['message'] = 'Successfully registered';
+                $_SESSION['id'] = $user_id;
+                header('location:user/dashboard.php');
             }else{
                 $_SESSION['message'] = $image_data['data'];
             }
+        }else{
+            $_SESSION['message'] = 'No image is selected';
         }
     }
 }
@@ -48,17 +53,16 @@ if (isset($_POST['submit'])) {
 
 <div id="signup">
     <h2 class="text-center text-white pt-5">Create An Account</h2>
-    <?php
-                    if(!empty($_SESSION['message'])){?>
-                        <h3 style="color: red; margin:50px" class="text-center"><?php echo $_SESSION['message']?></h3>
-                    <?php }
-                    unset($_SESSION['message']);
-                    ?>
     <div class="container">
         <div id="signup-row" class="row justify-content-center align-items-center">
             <div id="signup-column" class="col-md-6">
                 <div id="signup-box" class="col-md-12">
-                    
+                    <?php
+                    if(!empty($_SESSION['message'])){?>
+                        <h3 style="color: red" class="text-center"><?php echo $_SESSION['message']?></h3>
+                    <?php }
+                    unset($_SESSION['message']);
+                    ?>
                     <form id="signup-form" class="form" action=" " method="post" enctype="multipart/form-data">
                         <h3 class="text-center title">Sign Up</h3>
                         <div class="form-group">

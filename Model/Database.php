@@ -16,7 +16,8 @@ class Database{
         return $data;
     }
     public function imageUpload($dir,$imageArr){
-        $target_dir = $dir."/";
+        #die('died'.'<pre>'.print_r($imageArr, true));
+        $target_dir = $dir."/"; // uploads/
         $target_file = $target_dir . basename($imageArr["name"]);
         //initially permission is 1
         $uploadOk = 1;

@@ -1,13 +1,13 @@
 <div class="profile-userpic">
-    <img src="../img/user1.jpg" class="img-responsive center" alt="">
+    <img src="../<?php echo $userInfo->image; ?>" class="img-responsive center" alt="">
 </div>
 
 <div class="profile-usertitle">
     <div class="profile-usertitle-name">
-        Cynthia
+    <?php echo $userInfo->fullname ?>
     </div>
     <div class="profile-usertitle-job">
-        Developer
+    <?php echo $userInfo->username ?>
     </div>
 </div>
 <div align="center">

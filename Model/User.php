@@ -21,6 +21,21 @@ class User extends Database{
         $st->bindParam(':image',$image);
         $st->bindParam(':created_at',$created_at);
         $st->execute();
-        return true;
+        return $this->db->lastInsertId();
     }
+    public function getUserById($id){
+        $st = $this->db->prepare("SELECT * FROM user WHERE id=:id");
+        $st->bindParam(':id',$id);
+        $st->execute();
+        $resultSet = $st->fetch(PDO::FETCH_OBJ);
+        return $resultSet;
+    }
+    public function getUserByEmail($email){
+        $st = $this->db->prepare("SELECT * FROM user WHERE email=:email");
+        $st->bindParam(':email',$email);
+        $st->execute();
+        $resultSet = $st->fetch(PDO::FETCH_OBJ);
+        return $resultSet;
+    }
+
 }

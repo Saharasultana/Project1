@@ -1,4 +1,24 @@
+<?php
+session_start();
+include('Model/User.php');
+//create an object of user class
+$user = new User();
 
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    if($user->isExistUserWithEmail($email)){
+        $userInfo = $user->getUserByEmail($email);
+        password_verify($password,$userInfo->password);
+
+        header('location:user/dashboard.php');
+        } else{
+            $_SESSION['message'] = 'Wrong password';
+    } else{
+          $_SESSION['message'] = 'There is no user with this email';
+     }
+}
+?>
 
 
 <!DOCTYPE html>
@@ -25,12 +45,12 @@
                         <form id="login-form" class="form" action=" " method="post">
                             <h3 class="text-center title">Login</h3>
                             <div class="form-group">
-                                <label for="username" class="title">Username:</label><br>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <label for="username" class="title">Email:</label><br>
+                                <input type="text" name="email" id="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="password" class="title">Password:</label><br>
-                                <input type="text" name="password" id="password" class="form-control">
+                                <input type="password" name="password" id="password" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="remember-me" class="title"><span>Remember me</span> <span><input
