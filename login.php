@@ -8,16 +8,17 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     if($user->isExistUserWithEmail($email)){
-        $userInfo = $user->getUserByEmail($email);
+        $userInfo = $user->getUserByEmail ($email);
         password_verify($password,$userInfo->password);
 
         header('location:user/dashboard.php');
-        } else{
-            $_SESSION['message'] = 'Wrong password';
-    } else{
-          $_SESSION['message'] = 'There is no user with this email';
-     }
+        }
+        else{
+            $_SESSION['message'] = 'There is no user with this email';
+        }
 }
+
+
 ?>
 
 

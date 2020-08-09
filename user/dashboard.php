@@ -4,6 +4,7 @@ include('../Model/User.php');
 //create an object of user class
 $user = new User();
 $userInfo = $user->getUserById($_SESSION ['id']);
+
 ?>
 
 <!DOCTYPE html>
