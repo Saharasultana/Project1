@@ -10,11 +10,12 @@ if (isset($_POST['submit'])) {
     if($user->isExistUserWithEmail($email)){
         $userInfo = $user->getUserByEmail ($email);
         password_verify($password,$userInfo->password);
+        $_SESSION['id'] = $userInfo;
 
         header('location:user/dashboard.php');
         }
         else{
-            $_SESSION['message'] = 'There is no user with this email';
+            $_SESSION['message'] = 'wrong Password';
         }
 }
 
