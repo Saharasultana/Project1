@@ -1,9 +1,5 @@
 <?php
-session_start();
-require_once '../Model/User.php';
-$user = new User();
-#die('died'.'<pre>'.print_r($_SESSION, true));
-$userInfo = $user->getUserById($_SESSION['id']);
+require_once 'session_required.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
