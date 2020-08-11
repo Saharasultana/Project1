@@ -9,25 +9,30 @@ if (isset($_POST['submit'])) {
     $fullname = $user->filter($_POST['fullname']);
     $email = $user->filter($_POST['email']);
     $password = $user->filter($_POST['password']);
-    $pass = password_hash("$password", PASSWORD_DEFAULT);
-    if($user->isExistUserWithEmail($email)){
-        $_SESSION['message'] = 'Already user exists with this email';
-    }else{
-        if($_FILES['image']){ //check if file contains
-            $image_data = $user->imageUpload('uploads',$_FILES['image']); //imageUpload function in Database.php
-            #die('died'.'<pre>'.print_r($image_data, true));
-            if($image_data['result'] == true){
-                $created_at = date('Y-m-d H:i:s');
-                $user_id = $user->addUser($fullname,$email,$username,$pass,$image_data['data'],$created_at);
-                $_SESSION['message'] = 'Successfully registered';
-                $_SESSION['id'] = $user_id;
-                header('location:user/dashboard.php');
-            }else{
-                $_SESSION['message'] = $image_data['data'];
-            }
+    $password_confirm = $user->filter($_POST['password_confirm']);
+    if($password == $password_confirm){
+        $pass = password_hash("$password", PASSWORD_DEFAULT);
+        if($user->isExistUserWithEmail($email)){
+            $_SESSION['message'] = 'Already user exists with this email';
         }else{
-            $_SESSION['message'] = 'No image is selected';
+            if($_FILES['image']){ //check if file contains
+                $image_data = $user->imageUpload('uploads',$_FILES['image']); //imageUpload function in Database.php
+                #die('died'.'<pre>'.print_r($image_data, true));
+                if($image_data['result'] == true){
+                    $created_at = date('Y-m-d H:i:s');
+                    $user_id = $user->addUser($fullname,$email,$username,$pass,$image_data['data'],$created_at);
+                    $_SESSION['message'] = 'Successfully registered';
+                    $_SESSION['id'] = $user_id;
+                    header('location:user/dashboard.php');
+                }else{
+                    $_SESSION['message'] = $image_data['data'];
+                }
+            }else{
+                $_SESSION['message'] = 'No image is selected';
+            }
         }
+    }else{
+        $_SESSION['message'] = 'The two passwords did not match';
     }
 }
 ?>
@@ -116,5 +121,4 @@ if (isset($_POST['submit'])) {
 </script>
 
 </body>
-
 </html>
