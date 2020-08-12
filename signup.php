@@ -65,28 +65,28 @@ if (isset($_POST['submit'])) {
         <div id="signup-row" class="row justify-content-center align-items-center">
             <div id="signup-column" class="col-md-6">
                 <div id="signup-box" class="col-md-12">
-                    <form id="signup-form" class="form" action=" " method="post" enctype="multipart/form-data">
+                    <form id="signup-form" class="form" onsubmit="return validation()" action=" " method="post" enctype="multipart/form-data">
                         <h3 class="text-center title">Sign Up</h3>
                         <div class="form-group">
                             <label for="username" class="title">Full Name:</label><br>
-                            <input type="text" name="fullname" id="name" class="form-control">
+                            <input type="text" name="fullname" id="name" class="form-control" placeholder=" Enter your fullname">
                         </div>
                         <div class="form-group">
                             <label for="username" class="title">Email:</label><br>
-                            <input type="text" name="email" id="email" class="form-control">
+                            <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email">
                         </div>
                         <div class="form-group">
                             <label for="password" class="title">Password:</label><br>
-                            <input type="password" name="password" id="password" class="form-control">
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
                         </div>
                         <div class="form-group">
                             <label for="password_confirm" class="title">Confirm Password:</label><br>
-                            <input type="password" name="password_confirm" id="password_confirm" class="form-control">
+                            <input type="password" name="password_confirm" id="password_confirm" class="form-control" placeholder="confirm password">
                         </div>
 
                         <p class="title">Image:</p>
                         <div class="custom-file mb-3">
-                            <input type="file" class="custom-file-input" id="customFile" name="image" required>
+                            <input type="file" class="custom-file-input" id="customFile" name="image" required >
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
 
@@ -118,7 +118,8 @@ if (isset($_POST['submit'])) {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-</script>
+
+
 
 </body>
 </html>
